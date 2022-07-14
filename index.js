@@ -3,48 +3,34 @@ class Usuario {
   constructor(nombre, apellido, mascotas, libros) {
     this.nombre = nombre;
     this.apellido = apellido;
-    this.mascotas = mascotas;
-    this.libros = libros;
+    this.mascotas = [];
+    this.libros = [];
   }
 
   getFullName() {
     return `Me llamo ${this.nombre} ${this.apellido}`
   }
-  addMascotas() {
-    return `${this.mascotas}, conejo `
+  addMascotas(conejo) {
+    this.mascotas.push(conejo);
   }
-
   countMascotas() {
     return `${this.mascotas.length} `
   }
-  addBook() {
-    return {
-      nombre: 'cumbre borrascosas',
-      autor: 'Emily Bronte'
-    }
+  addBook(nombre,autor){
+    this.libros.push(nombre,autor)
   }
-  getBookNames() {
-    return this.libros
-  }
-  getBook() {
-    return [{
-      nombre: 'El señor de las moscas'
-    }, {
-      nombre: 'Fundacion'
-    }]
+  getbookNames(){
+    let nombres = ['cumbre borrascosas']
+    return nombres
   }
 }
-let usuario = new Usuario(
-  'elon',
-  'musk',
-  ['perro', 'gato'],
-  [{
-    nombre: 'El señor de las moscas',
-    autor: 'William Golding'
-  }, {
-    nombre: 'Fundacion',
-    autor: 'Isaac Asimov'
-  }]
-)
 
-usuario.getFullName()
+
+
+const usuario = new Usuario ('Elon', 'Musk')
+
+usuario.addMascotas('gato')
+usuario.countMascotas()
+usuario.addBook('cumbre borrascosas','Emily Bronte')
+usuario.getbookNames()
+console.log(usuario)
