@@ -47,3 +47,4 @@ let usuario = new Usuario(
   }]
 )
 
+usuario.getFullName()
