@@ -1,0 +1,50 @@
+[
+  {
+    "nombre": "Remera 1",
+    "precio": 3000,
+    "categoria": "Ropa",
+    "decripcion": "Remera mangas largas negra",
+    "thumbnail": "https://www.bing.com/images/search?q=remeras&FORM=HDRSC2",
+    "id": 1
+  },
+  {
+    "nombre": "Remera 2",
+    "precio": 3000,
+    "categoria": "Ropa",
+    "decripcion": "Remera mangas largas negra",
+    "thumbnail": "https://www.bing.com/images/search?q=remeras&FORM=HDRSC2",
+    "id": 2
+  },
+  {
+    "nombre": "Remera 3",
+    "precio": 3000,
+    "categoria": "Ropa",
+    "decripcion": "Remera mangas largas negra",
+    "thumbnail": "https://www.bing.com/images/search?q=remeras&FORM=HDRSC2",
+    "id": 3
+  },
+  {
+    "nombre": "Remera 4",
+    "precio": 3000,
+    "categoria": "Ropa",
+    "decripcion": "Remera mangas largas negra",
+    "thumbnail": "https://www.bing.com/images/search?q=remeras&FORM=HDRSC2",
+    "id": 4
+  },
+  {
+    "nombre": "Remera 5",
+    "precio": 3000,
+    "categoria": "Ropa",
+    "decripcion": "Remera mangas largas negra",
+    "thumbnail": "https://www.bing.com/images/search?q=remeras&FORM=HDRSC2",
+    "id": 5
+  },
+  {
+    "nombre": "Remera 5",
+    "precio": 3000,
+    "categoria": "Ropa",
+    "decripcion": "Remera mangas largas negra",
+    "thumbnail": "https://www.bing.com/images/search?q=remeras&FORM=HDRSC2",
+    "id": 6
+  }
+]

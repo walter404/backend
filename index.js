@@ -20,8 +20,7 @@ class Usuario {
     this.libros.push(nombre,autor)
   }
   getbookNames(){
-    let nombres = ['cumbre borrascosas']
-    return nombres
+    return this.libros.map(e=>e.nombre)
   }
 }
 
@@ -29,8 +28,10 @@ class Usuario {
 
 const usuario = new Usuario ('Elon', 'Musk')
 
+usuario.getFullName()
 usuario.addMascotas('gato')
+usuario.addMascotas('perro')
 usuario.countMascotas()
 usuario.addBook('cumbre borrascosas','Emily Bronte')
+usuario.addBook('cumbre borrascosas 2','Emily Bronte')
 usuario.getbookNames()
-console.log(usuario)
