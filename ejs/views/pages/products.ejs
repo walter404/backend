@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products with EJS</title>
+  </head>
+  <body>
+    <header><%- include('../partials/header'); %></header>
+    <h1>Products</h1>
+    <% if (products) { %>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Price</th>
+          <th>Image</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% products.forEach(function(product) { %>
+        <tr>
+          <td><%- product.title %></td>
+          <td>$<%- product.price %></td>
+          <td><%- product.image %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+    <% } else { %>
+    <p>No products found</p>
+    <% } %>
+    <footer><%- include('../partials/footer'); %></footer>
+  </body>
+</html>

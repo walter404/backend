@@ -1,0 +1,22 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title Products with Pug
+  body
+    include ./partials/header
+    h1 Add a new product
+    form(action="/products" method="post")
+      label
+        span Title
+        input(type="text", name="title" value=title)
+      label
+        span Price
+        input(type="text", name="price" value=price)
+      label
+        span Image
+        input(type="text", name="image" value=image)
+      input(type="submit", value="Add Product")
+    include ./partials/footer

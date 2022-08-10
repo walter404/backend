@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EJS</title>
+  </head>
+  <body>
+    <header><%- include('../partials/header'); %></header>
+    <h1>Add a new product</h1>
+    <form action="/products" method="post">
+      <label>
+        <span>Title</span>
+        <input type="text" name="title" />
+      </label>
+      <label>
+        <span>Price</span>
+        <input type="text" name="price" />
+      </label>
+      <label>
+        <span>Image</span>
+        <input type="text" name="image" />
+      </label>
+      <input type="submit" value="Add Product" />
+    </form>
+    <footer><%- include('../partials/footer'); %></footer>
+  </body>
+</html>
