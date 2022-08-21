@@ -4,9 +4,9 @@ const Comment = ({nombre, comentario = "", titulo = "", fecha = 0}) => {
         <div className="py-6">
             <div>
                
-                <h4 className="font-bold text-lg">{titulo}</h4>
-                <p className="font-light py-2">{comentario}</p>
-                <p className="font-light text-xs">{nombre} | {fecha} | comprador verificado</p>
+                <h4 >{titulo}</h4>
+                <p >{comentario}</p>
+                <p>{nombre} | {fecha} | comprador verificado</p>
             </div>
         </div>
     )
