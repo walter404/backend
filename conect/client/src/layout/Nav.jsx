@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useSocket from "../hooks/useSockect";
 import DrawnerForm from "./DrawnerForm";
+
 const Nav = () => {
   const { isConnected } = useSocket({});
   const [open, setOpen] = useState(false);
@@ -27,7 +28,7 @@ const Nav = () => {
       </div>
       </div>
     </nav>
-       
+    
     </>
   );
 };

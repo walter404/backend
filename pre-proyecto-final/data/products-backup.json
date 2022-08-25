@@ -1,0 +1,173 @@
+[
+  {
+    "id": 1,
+    "timestamp": "2022-08-25T14:28:09.179Z",
+    "description": "Polo confeccionado en tejido de algodón con estructura piqué. Cuello tira con cierre frontal con botones. Manga corta acabada en rib. Bajo con aberturas laterales.",
+    "price": 549,
+    "stock": 5,
+    "title": "Polo Estructura Piqué",
+    "image": "https://res.cloudinary.com/dlomynswh/image/upload/v1652837828/ch-ecommerce/polo-estructura-pique-3_yanuof.jpg"
+  },
+  {
+    "id": 2,
+    "timestamp": "2022-08-25T14:28:28.107Z",
+    "description": "Camiseta de cuello redondo y manga corta. Bajo acabado en volante con tejido combinado a tono.",
+    "price": 499,
+    "stock": 7,
+    "title": "Camiseta Peplum Combinada",
+    "image": "https://res.cloudinary.com/dlomynswh/image/upload/v1652841656/ch-ecommerce/camiseta-peplum-combinada-3_hiotqy.jpg"
+  },
+  {
+    "id": 3,
+    "timestamp": "2022-08-25T14:33:03.220Z",
+    "description": "Blazer de cuello con solapas de muesca. Manga larga acabada en puño con detalle de botones. Bolsillo de vivo en pecho y de solapa en cadera. Detalle bolsillo interior. Cierre frontal con botones.",
+    "price": 2299,
+    "stock": 0,
+    "title": "Blazer Conjunto Slim",
+    "image": "https://res.cloudinary.com/dlomynswh/image/upload/v1652839057/ch-ecommerce/blazer-conjunto-slim-2_gwohr9.jpg"
+  },
+  {
+    "id": 4,
+    "timestamp": "2022-08-25T15:10:41.510Z",
+    "description": "Sudadera amplia de cuello con capucha ajustable y manga larga. Bolsillos frontal tipo canguro. Acabados en rib.",
+    "price": 749,
+    "stock": 5,
+    "title": "Sudadera Básica Capucha",
+    "image": "https://res.cloudinary.com/dlomynswh/image/upload/v1652838277/ch-ecommerce/sudadera-basica-capucha-2_zjez5g.jpg"
+  },
+  {
+    "id": 5,
+    "timestamp": "2022-08-25T15:14:33.611Z",
+    "description": "Top de cuello subido y manga sisa. Detalle de pliegues.",
+    "price": 549,
+    "stock": 6,
+    "title": "Top Pliegues",
+    "image": "https://res.cloudinary.com/dlomynswh/image/upload/v1653939527/ch-ecommerce/top-pliegues-1_wduwgt.jpg"
+  },
+  {
+    "id": 6,
+    "timestamp": "2022-08-25T15:16:18.006Z",
+    "description": "Pantalón pitillo de tiro alto con costuras marcadas. Bolsillos delanteros de vivo. Cierre frontal con cremallera, botón interior y gancho metálico.",
+    "price": 749,
+    "stock": 4,
+    "title": "Pantalón Tiro Alto",
+    "image": "https://res.cloudinary.com/dlomynswh/image/upload/v1652839787/ch-ecommerce/pantalon-tiro-alto-1_uampcj.jpg"
+  },
+  {
+    "id": 7,
+    "timestamp": "2022-08-25T15:18:14.953Z",
+    "description": "Sudadera de cuello redondo y manga larga. Acabados en rib.",
+    "price": 299,
+    "stock": 5,
+    "title": "Sudadera Básica",
+    "image": "https://res.cloudinary.com/dlomynswh/image/upload/v1652841060/ch-ecommerce/sudadera-basica-1_dvpade.jpg"
+  },
+  {
+    "id": 8,
+    "timestamp": "2022-08-25T15:19:32.489Z",
+    "description": "Blazer abierta de cuello solapa con manga remangada por debajo del codo con trabilla y botón dorado. Hombreras y bolsillos delanteros con solapa.",
+    "price": 1299,
+    "stock": 3,
+    "title": "Blazer Manga Remangada",
+    "image": "https://res.cloudinary.com/dlomynswh/image/upload/v1653939068/ch-ecommerce/blazer-manga-remangada-1_mxliow.jpg"
+  },
+  {
+    "id": 9,
+    "timestamp": "2022-08-25T15:20:36.223Z",
+    "description": "Easy on the eyes. Una selección de seis sombras de textura sedosa y delicada que se difuminan de manera óptima.",
+    "price": 499,
+    "stock": 3,
+    "title": "Paleta De Sombras De Ojos",
+    "image": "https://res.cloudinary.com/dlomynswh/image/upload/v1653940473/ch-ecommerce/paleta-de-sombras-de-ojos-1_yfim0x.jpg"
+  },
+  {
+    "id": 10,
+    "timestamp": "2022-08-25T15:22:16.390Z",
+    "description": "Camisa fluida de cuello solapa con escote pico y manga larga. Cierre frontal con botones.",
+    "price": 599,
+    "stock": 5,
+    "title": "Camisa Satinada",
+    "image": "https://res.cloudinary.com/dlomynswh/image/upload/v1652840031/ch-ecommerce/camisa-satinada-2_rqrrqe.jpg"
+  },
+  {
+    "id": 11,
+    "timestamp": "2022-08-25T15:23:31.030Z",
+    "description": "Barra de maquillaje de textura cremosa, disponible en tres acabados: mate, perlado y glitter. Producto formulado con ácido hialurónico. Efecto hidratación inmediata.",
+    "price": 349,
+    "stock": 5,
+    "title": "Manifesto Color Stick",
+    "image": "https://res.cloudinary.com/dlomynswh/image/upload/v1652844742/ch-ecommerce/manifesto-color-stick-1_dcnvkh.jpg"
+  },
+  {
+    "id": 12,
+    "timestamp": "2022-08-25T15:24:26.869Z",
+    "description": "Superior wear, naturally. Esta fórmula de gran eficacia contiene un alto porcentaje de ingredientes naturales y ofrece la misma duración que los esmaltes tradicionales.",
+    "price": 149,
+    "stock": 5,
+    "title": "Laca De Uñas",
+    "image": "https://res.cloudinary.com/dlomynswh/image/upload/v1652844431/ch-ecommerce/laca-de-unas-1_d23zho.jpg"
+  },
+  {
+    "id": 13,
+    "timestamp": "2022-08-25T15:25:27.756Z",
+    "description": "Sombra de ojos, kajal y eyeliner todo en uno que proporciona un acabado uniforme con una sola aplicación. Disponible en acabados mate y metalizado.",
+    "price": 199,
+    "title": "Eye Color Stick",
+    "stock": 5,
+    "image": "https://res.cloudinary.com/dlomynswh/image/upload/v1653940002/ch-ecommerce/eye-color-stick-1_uaabi0.jpg"
+  },
+  {
+    "id": 14,
+    "timestamp": "2022-08-25T15:26:29.846Z",
+    "description": "Jeans slim fit. Cinco bolsillos. Efecto lavado. Cierre frontal con cremallera y botón.",
+    "price": 749,
+    "stock": 4,
+    "title": "Jeans Básico Slim Fit",
+    "image": "https://res.cloudinary.com/dlomynswh/image/upload/v1654300716/ch-ecommerce/jeans-basico-slim-fit-1_gyctvr.jpg"
+  },
+  {
+    "id": 15,
+    "timestamp": "2022-08-25T15:27:20.612Z",
+    "description": "Camisa slim fit de cuello italiano y manga larga acabada en puño con botón. Cierre frontal de botonadura.",
+    "price": 699,
+    "stock": 5,
+    "title": "Camisa Estructura Easy Care",
+    "image": "https://res.cloudinary.com/dlomynswh/image/upload/v1652806725/ch-ecommerce/camisa-estructura-easy-care-1_oexww3.jpg"
+  },
+  {
+    "id": 16,
+    "timestamp": "2022-08-25T15:28:21.240Z",
+    "description": "Welcome matte: esta fórmula suave ofrece un color intenso y duradero en una sola pasada. Un pintalabios de culto, formulado con pigmentos ultrafinos, aceites y extractos frutales nutritivos para conseguir un color intenso y duradero de acabado suave y uniforme.",
+    "price": 299,
+    "stock": 5,
+    "title": "Ultimatte Matte Lipstick",
+    "image": "https://res.cloudinary.com/dlomynswh/image/upload/v1652844184/ch-ecommerce/ultimatte-matte-lipstick-1_a0hobl.jpg"
+  },
+  {
+    "id": 17,
+    "timestamp": "2022-08-25T15:29:19.589Z",
+    "description": "Camiseta confeccionada en algodón con elasticidad. Cuello redondo y manga corta.",
+    "price": 299,
+    "stock": 5,
+    "title": "Camiseta Básica Slim Fit",
+    "image": "https://res.cloudinary.com/dlomynswh/image/upload/v1652837608/ch-ecommerce/camiseta-basica-slim-fit-1_roltud.jpg"
+  },
+  {
+    "id": 18,
+    "timestamp": "2022-08-25T15:30:07.480Z",
+    "description": "Cazadora de cuello acabado en rib. Manga larga. Bolsillos de vivo en cadera. Detalle de bolsillo interior. Bajo acabado con elástico. Cierre frontal con cremallera.",
+    "price": 899,
+    "stock": 5,
+    "title": "Cazadora Bomber Básica",
+    "image": "https://res.cloudinary.com/dlomynswh/image/upload/v1652838679/ch-ecommerce/cazadora-bomber-basica-1_rhboq4.jpg"
+  },
+  {
+    "id": 19,
+    "timestamp": "2022-08-25T15:31:06.313Z",
+    "description": "Easy on the eyes. Un dúo de sombras de textura sedosa e imperceptible que se difuminan de forma impecable.",
+    "price": 299,
+    "stock": 5,
+    "title": "Sombra De Ojos Dúo",
+    "image": "https://res.cloudinary.com/dlomynswh/image/upload/v1652844969/ch-ecommerce/sombra-de-ojos-duo-1_kivhg3.jpg"
+  }
+]
