@@ -1,0 +1,21 @@
+{{> header}}
+<h2>Products</h2>
+{{#if products}}
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Image</th>
+      </tr>
+    </thead>
+    <tbody id="products">
+      {{#each products}}
+        <tr></tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  <p>No products found</p>
+{{/if}}
+{{> footer}}

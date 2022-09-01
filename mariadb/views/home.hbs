@@ -1,0 +1,52 @@
+{{> header}}
+<h1>Add a new product</h1>
+<form onsubmit="return addProduct(event)">
+  <label>
+    <span>Title</span>
+    <input type="text" name="title" value="{{title}}" id="title">
+  </label>
+  <label>
+    <span>Price</span>
+    <input type="text" name="price" value="{{price}}" id="price">
+  </label>
+  <label>
+    <span>Thumbnail</span>
+    <input type="text" name="thumbnail" value="{{thumbnail}}" id="thumbnail">
+  </label>
+  <input type="submit" value="Add">
+</form>
+<h2>Products</h2>
+{{#if products}}
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Image</th>
+      </tr>
+    </thead>
+    <tbody id="products">
+      {{#each products}}
+        <tr></tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  <p>No products found</p>
+{{/if}}
+<h2>Chat</h2>
+{{#if messages}}
+  <ul id="messages">
+    {{#each messages}}
+      <li>{{timestamp}} - {{email}} - {{message}}</li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>No messages found</p>
+{{/if}}
+<form onsubmit="return addMessage(event)">
+  <input type="email" id="email" placeholder="email">
+  <input type="text" id="message" placeholder="message">
+  <input type="submit" value="Send">
+</form>
+{{> footer}}
