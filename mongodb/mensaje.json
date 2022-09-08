@@ -1,0 +1,21 @@
+[{
+  "_id": {
+    "$oid": "6319ef39f73996ec6de36263"
+  },
+  "text": "hola mundo"
+},{
+  "_id": {
+    "$oid": "6319ef39f73996ec6de36264"
+  },
+  "text": "hola"
+},{
+  "_id": {
+    "$oid": "6319ef39f73996ec6de36265"
+  },
+  "text": "hola como estas?"
+},{
+  "_id": {
+    "$oid": "6319ef39f73996ec6de36266"
+  },
+  "text": "hola buenos dias"
+}]

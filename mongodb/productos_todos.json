@@ -1,0 +1,46 @@
+[{
+  "_id": {
+    "$oid": "6319e949f73996ec6de3625d"
+  },
+  "id_prod": "2",
+  "name": "remera blanca",
+  "price": 580,
+  "image": "remera1.png",
+  "stock": 0
+},{
+  "_id": {
+    "$oid": "6319ea32f73996ec6de3625f"
+  },
+  "id_prod": "4",
+  "name": "remera rosa",
+  "price": 1280,
+  "image": "remera3.png, stock: 100",
+  "stock": 0
+},{
+  "_id": {
+    "$oid": "6319eb08f73996ec6de36260"
+  },
+  "id_prod": "5",
+  "name": "remera roja",
+  "price": 1700,
+  "image": "remera4.png",
+  "stock": 0
+},{
+  "_id": {
+    "$oid": "6319ebb9f73996ec6de36261"
+  },
+  "id_prod": "6",
+  "name": "remera verde",
+  "price": 2300,
+  "image": "remera5.png",
+  "stock": 0
+},{
+  "_id": {
+    "$oid": "6319ec18f73996ec6de36262"
+  },
+  "id_prod": "7",
+  "name": "remera roja",
+  "price": 2860,
+  "image": "remera6.png",
+  "stock": 0
+}]

@@ -1,0 +1,60 @@
+// Select the database to use
+use('ecommerce');
+
+// Create messages collection
+db.createCollection('messages');
+
+// Create products collection
+db.createCollection('products');
+
+// The drop() command destroys all data from a collection
+db.products.drop();
+
+// Insert a few documents into the messages collection
+db.messages.insertMany([
+  { text: 'hola' },
+])
+
+// Insert a few documents into the products collection
+db.products.insertMany([
+  { name: 'remera negra', price: 200, image: 'remera1.png' },
+]);
+
+// List all the documents in the products collection
+db.products.find();
+
+// Return the number of the products collection
+db.products.countDocuments();
+
+// Add a new document to the products collection
+db.products.insertOne({ name: 'Egg', price: 100, category: 'dairy', image: 'egg.png' });
+
+// List the title of products priced under 200
+db.products.find({ price: { $lt: 200 } }, { name: 1, _id: 0 });
+
+// List the title of products priced under 300 and over 100
+db.products.find({ price: { $lt: 300, $gt: 100 } }, { name: 1, _id: 0 });
+
+// List the title of products priced greater than or equal to 300
+db.products.find({ price: { $gte: 300 } }, { name: 1, _id: 0 });
+
+// List the title of third product cheapest
+db.products.find({}, { name: 1, _id: 0 }).sort({ price: 1 }).limit(1).skip(2);
+
+// Add a new field to the products collection called stock
+db.products.updateMany({}, { $set: { stock: 100 } });
+
+// Change the stock to 0 for all products priced over 300
+db.products.updateMany({ price: { $gt: 300 } }, { $set: { stock: 0 } });
+
+// Delete products with price under 200
+db.products.deleteMany({ price: { $lt: 200 } });
+
+// Delete all users
+db.dropAllUsers();
+
+// Create a new user called pepe with password asd456 that only can read the products collection
+db.createUser({ user: 'pepe', pwd: 'asd456', roles: [{ role: 'read', db: 'ecommerce', collection: 'products' }] });
+
+// List all users
+db.getUsers();
