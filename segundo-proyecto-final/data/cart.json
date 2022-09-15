@@ -1,0 +1,31 @@
+[
+  {
+    "id": 1,
+    "timestamp": "2022-08-25T02:08:36.302Z",
+    "products": [
+      {
+        "id": 1,
+        "timestamp": "2022-08-25T14:28:09.179Z",
+        "description": "Polo confeccionado en tejido de algodón con estructura piqué. Cuello tira con cierre frontal con botones. Manga corta acabada en rib. Bajo con aberturas laterales.",
+        "price": 549,
+        "stock": 5,
+        "title": "Polo Estructura Piqué",
+        "image": "https://res.cloudinary.com/dlomynswh/image/upload/v1652837828/ch-ecommerce/polo-estructura-pique-3_yanuof.jpg"
+      },
+      {
+        "id": 2,
+        "timestamp": "2022-08-25T14:28:28.107Z",
+        "description": "Camiseta de cuello redondo y manga corta. Bajo acabado en volante con tejido combinado a tono.",
+        "price": 499,
+        "stock": 7,
+        "title": "Camiseta Peplum Combinada",
+        "image": "https://res.cloudinary.com/dlomynswh/image/upload/v1652841656/ch-ecommerce/camiseta-peplum-combinada-3_hiotqy.jpg"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "timestamp": "2022-08-25T21:51:12.150Z",
+    "products": []
+  }
+]
