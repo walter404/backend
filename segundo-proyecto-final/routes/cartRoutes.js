@@ -2,13 +2,13 @@ const express = require('express');
 
 switch (process.env.NODE_ENV) {
   case 'mongodb':
-    cartController = require('../controllers/cartControllerMongoDB');
+    cartController = require('../daos/cart/cartControllerMongoDB');
     break;
   case 'firebase':
-    cartController = require('../controllers/cartControllerFirebase');
+    cartController = require('../daos/cart/cartControllerFirebase');
     break;
   default:
-    cartController = require('../controllers/cartControllerFile');
+    cartController = require('../daos/cart/cartControllerFile');
 }
 
 const router = express.Router();

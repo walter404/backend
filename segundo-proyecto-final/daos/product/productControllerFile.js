@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const products = JSON.parse(fs.readFileSync('./data/products.json'));
+const products = JSON.parse(fs.readFileSync('../data/products.json'));
 
 exports.isAdmin = (req, res, next) => {
   const isAdmin = true;

@@ -1,4 +1,4 @@
-const Product = require('../models/productModelMongoDB');
+const Product = require('../../models/productModelMongoDB');
 
 exports.isAdmin = (req, res, next) => {
   const isAdmin = true;

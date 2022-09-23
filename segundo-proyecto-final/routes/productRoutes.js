@@ -2,13 +2,13 @@ const express = require('express');
 
 switch (process.env.NODE_ENV) {
   case 'mongodb':
-    productController = require('../controllers/productControllerMongoDB');
+    productController = require('../daos/product/productControllerMongoDB');
     break;
   case 'firebase':
-    productController = require('../controllers/productControllerFirebase');
+    productController = require('../daos/product/productControllerFirebase');
     break;
   default:
-    productController = require('../controllers/productControllerFile');
+    productController = require('../daos/product/productControllerFile');
 }
 
 const router = express.Router();

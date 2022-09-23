@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const cart = JSON.parse(fs.readFileSync('./data/cart.json'));
+const cart = JSON.parse(fs.readFileSync('../data/cart.json'));
 
 exports.createCart = (req, res) => {
   const newId = cart[cart.length - 1].id + 1;

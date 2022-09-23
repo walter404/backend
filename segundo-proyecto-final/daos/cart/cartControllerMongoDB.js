@@ -1,4 +1,4 @@
-const Cart = require('../models/cartModelMongoDB');
+const Cart = require('../../models/cartModelMongoDB');
 
 exports.createCart = async (req, res) => {
   try {
