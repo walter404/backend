@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <form>
+        Usuario:
+        <input type="text" id="username" /><br />
+        Password :
+        <input type="text" id="pass" /><br />
+        <button id="button">Enviar!</button>
+      </form>
+    </body>
+    <script>
+      const btn = document.getElementById('button');
+  
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log('algo?')
+        const url ='http://localhost:4000/login';
+        let username = document.getElementById('username').value;
+        let password = document.getElementById('pass').value;
+        return fetch(url, {port:4000, method: "POST", headers: {'Content-Type': 'application/json'}, body: JSON.stringify({username, password})});
+      })
+    
+    </script>
+</body>
+</html>
