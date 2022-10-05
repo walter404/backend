@@ -7,14 +7,19 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
+app.set("view engine", "ejs");
+app.set("views", "./views");
+
+app.use(express.static("public"));
+
 const redisStore = connectRedis(session)
 
 const redisClient = createClient({
     socket:{
-        host: 'redis-12757.c14.us-east-1-2.ec2.cloud.redislabs.com',
-        port: 12757,
+        host: 'redis-14146.c265.us-east-1-2.ec2.cloud.redislabs.com',
+        port: 14146,
     },
-    password: 'lWsQsGAK4er3PPFSp5MZoSBS3V5tsSgG',
+    password: 'dEZNpxNBKVMMJDvtniywBiG3GaZxIPC5',
     legacyMode:true     
 })
 redisClient.on('error', function (err) {
@@ -27,7 +32,7 @@ redisClient.connect();
 //Configuramos el middleware
 app.use(session({
     store: new redisStore({ client: redisClient }),
-    secret: 'lWsQsGAK4er3PPFSp5MZoSBS3V5tsSgG',
+    secret: 'dEZNpxNBKVMMJDvtniywBiG3GaZxIPC5',
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -41,21 +46,22 @@ app.get('/', (req, res) => {
             res.write(`<h1>Bievenido ${sess.username} </h1><br>`)
             res.end('<a href=' + '/logout' + '>Cerrar Sesion</a >')
         
-    }else {
+    }
+    else {
         var currentPath = process.cwd();
 
-        res.sendFile( currentPath + "/login.html")
+        res.render( currentPath + "/views/login.ejs")
     }
 })
 
-app.post('/login', (req,res) => {
+app.post('/login', async (req,res) => {
     const sess = req.session;
     const { username, password } = req.body;
     sess.username = username;
     sess.password = password
-    res.redirect('/')
+    await res.redirect('/')
 })
-app.get('/logout', (req,res) =>{
+app.get('/logout',  (req,res) =>{
     req.session.destroy(err => {
         if(err) {
             return console.log(err)
@@ -64,7 +70,9 @@ app.get('/logout', (req,res) =>{
     })
 })
 
-const PORT = process.env.PORT || 4000
+const PORT = process.env.PORT || 3005
 app.listen(PORT, ()=>{
     console.log(`escuchando el puerto ${PORT}`);
 })
+
+//password de usuario @wally2021
