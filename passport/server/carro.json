@@ -1,0 +1,29 @@
+[
+  {
+    "idProducto": 21,
+    "producto": "Adidas Ozweego",
+    "precio": "2",
+    "thumbnail": "https://assets.adidas.com/images/w_766,h_766,f_auto,q_auto,fl_lossy,c_fill,g_auto/aea597b2faac4d8a95a1ad4f00ab0695_9366/ozweego-pure.jpg",
+    "idUsuario": 1,
+    "timeStamp": 1664750717120,
+    "id": 4
+  },
+  {
+    "idProducto": 20,
+    "producto": "Adidas Predator",
+    "precio": "10000",
+    "thumbnail": "https://assets.adidas.com/images/w_766,h_766,f_auto,q_auto,fl_lossy,c_fill,g_auto/6a1405e4c7764cc8a9e2ab4900aa2e8d_9366/botines-de-futbol-predator-20.4-versatil.jpg",
+    "idUsuario": 1,
+    "timeStamp": 1661711445038,
+    "id": 3
+  },
+  {
+    "idProducto": 22,
+    "producto": "Adidas Ultraboos 22",
+    "precio": "44400",
+    "thumbnail": "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto,fl_lossy,c_fill,g_auto/3bb6def9ffbb4748b2a1adf900a21bb5_9366/zapatillas-ultraboost-22.jpg",
+    "idUsuario": 1,
+    "timeStamp": 1661711442817,
+    "id": 1
+  }
+]
