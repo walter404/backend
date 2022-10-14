@@ -13,6 +13,9 @@ const productos = new Contenedor('./productos.json')
 const comentarios = new Contenedor('./comentarios.json')
 const morgan = require('morgan')
 
+const {RandomRouter} = require('./RandomRouter')
+dotenv.config()
+
 const app = express()   
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
@@ -95,31 +98,24 @@ passport.use('login', new LocalStrategy(
     }
   ));
 
-passport.use('signup', new LocalStrategy({
-    passReqToCallback: true
-}, (req, username, password, done) => {
-    let user = Users.find( user => user.username === username )
-    const { name, email } = req.body
-
-    if (user) {
-        console.log(`El usuario ${username} ya existe`)
-        return done(null, false, { message: 'User already exists' })
+  passport.use( new LocalStrategy( {
+    usernameField: 'userId',
+    passwordField: 'pass'
+},(userId, pass, done) =>{
+        User.findOne({userId}, async (err, usr)=>{
+            if(err) throw err;
+            if(!usr) done(null, false);
+            bcrypt.compare(pass, usr.pass, (err, result)=>{
+                if(err) throw err
+                if(result) {
+                    return done(null, usr)
+                }else{
+                    return done(null, false)
+                }
+            })          
+        })   
     }
-
-    let newUser = {
-        id: Users.length + 1,
-        username,
-        // password: createHash(password),
-        password,
-        name,
-        email
-    }
-
-    Users.push(newUser)
-
-    return done(null, newUser.id)
-
-}))
+))
 //////////////////   passport serialize   ///////
 
 passport.serializeUser((user, done) => {
@@ -153,4 +149,17 @@ app.get('/logout', (req, res, next) => {
         res.redirect('/login')
     })
 })
+
+app.get('/api/info', (req,res)=>{
+    const info = {
+        path: process.cwd(),
+        processId: process.pid,
+        nodeVersion: process.version,
+        title: process.tittle,
+        system: process.platform,
+        memory: process.memoryUsage.rss(),
+      };   
+      res.send(info);
+})
+
 server.listen(4000, () => {console.log('server is running on 4000')})
