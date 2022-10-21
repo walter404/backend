@@ -17,7 +17,7 @@ export const cartSlice = createSlice({
       state.carrito.push(action.payload)
   },
     initCart: (state, action) => {
-      state.carrito = [...action.payload]
+      state.carrito = [...action.payload.carro]
   },
     deleteElementCart: (state, action) => {
       return {

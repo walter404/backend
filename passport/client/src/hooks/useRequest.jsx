@@ -8,11 +8,26 @@ const useRequest = ({ url, method, body, onSuccess }) => {
     try {
       setErrors(null);
       const formatUrl = `http://localhost:4000${url}`;
-      const response = await axios[method](formatUrl, {...props, ...body});
-      if (onSuccess) {
-        onSuccess(response.data);
-      }
-      return response.data;
+    /*   const response = await axios[method](formatUrl,       
+          {  ...props, ...body },
+          {
+            withCredentials: true,
+            xsrfCookieName: 'csrftoken_testtest',
+            xsrfHeaderName: 'X-CSRFToken',
+        } 
+      ); */
+      const response = axios({
+        method,
+        data: body,
+        withCredentials: true,
+        url: formatUrl,
+      }).then((res) => {
+        console.log(res)
+        if (onSuccess) {
+          onSuccess(res.data);
+        }
+        return res.data;
+      });
     } catch (err) {
       <h1>{err}</h1>;
       setErrors(

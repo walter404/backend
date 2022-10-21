@@ -1,104 +1,45 @@
-const express = require('express');
-const cors = require('cors')
-const http = require('http');
-const httpServer = require("http").createServer();
-const session = require('express-session')
-const passport = require('passport')
-const LocalStrategy = require('passport-local').Strategy
-const Contenedor = require('./Contenedor.js');
-const produtosRouter = require('./productosRouter.js');
-const carroRouter = require("./carroRouter.js");
-
-const productos = new Contenedor('./productos.json')
-const comentarios = new Contenedor('./comentarios.json')
-const morgan = require('morgan')
-
-const {RandomRouter} = require('./RandomRouter')
+import * as dotenv from 'dotenv'
+import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
+import express from "express";
+import cors from "cors";
+import passport from "passport";
+import passportLocal from "passport-local";
+import cookieParser from "cookie-parser";
+import session from "express-session"
+import User from "./User.js";
+import { ProductosMongoRouter } from "./productosMongoRouter.js";
+import {carritoMongoRouter} from "./carritosMongoRouter.js";
+import {RandomRouter} from './RandomRouter.js'
 dotenv.config()
 
-const app = express()   
-app.use(express.json())
-app.use(express.urlencoded({extended:true}))
-app.use(cors())
-app.use(produtosRouter)
-app.use(carroRouter)
-app.use(morgan('dev'))
-
-const server = http.createServer(app);
-const io = require("socket.io")(httpServer, {
-    cors: {
-        origin: "*",
-        methods: ["GET", 'POST']
-    }
+const LocalStrategy = passportLocal.Strategy
+const url = process.env.MONGO_URI;
+mongoose.connect(url,{
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}, (err) => {
+    if (err) throw err;
+    console.log('mongodb conectado')
 })
-
-io.on('connection', async (socket) =>{
-    const listaComentarios = await comentarios.getAll()
-    const listaProductos = await productos.getAll()   
-
-    socket.emit('comentarios', listaComentarios)
-    socket.emit('productos', listaProductos )
-    socket.on('producto', async (data) => {    
-        await productos.save({producto: data.body.producto, precio: data.body.precio, thumbnail: data.body.thumbnail});
-        const listaProductos = await comentarios.getAll() 
-        io.sockets.emit('productos', listaProductos)
+const app = express();
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
+app.use(cookieParser());
+app.use(cors({origin:"http://localhost:5173", credentials:true}))
+app.use(
+    session({
+        secret:"secretcode",
+        resave: true,
+        saveUninitialized: true
     })
-    socket.on('message', async (data) => {    
-        await comentarios.save({nombre: data.body.nombre, titulo: data.body.titulo, comentario: data.body.comentario, fecha: new Date().toLocaleDateString('es-ar', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) 
-    });
-        const listaComentarios = await comentarios.getAll() 
-        io.sockets.emit('comentarios', listaComentarios)
-    })
-  
-})
-
-app.use(session({
-    secret: 'secret',
-    cookie: {
-        httpOnly: true,
-        secure: false,
-        maxAge: 1000 * 60 * 60 * 24 * 7
-
-    },
-    rolling: true,
-    resave: false,
-    saveUninitialized: false,
-}))
-
-app.use(passport.initialize())
-app.use(passport.session())
-
-
-
-/////////// utils /////////
-
-const isValidePassword = (user, password) => {
-    return bcrypt.compareSync(password, user.password)
-}
-
-
-const createHash = (password) => {
-    return bcrypt.hashSync(password, bcrypt.genSaltSync(10), null)
-}
-
-const checkAuth = (req, res, next) => {
-    if (req.isAuthenticated()) {
-        next()
-    }else{
-        res.redirect('/login')
-    }
-    
-
-}
-////////// PASSPORT  midelware //////////
-
-passport.use('login', new LocalStrategy(
-    function(pass, userId, done) {      
-         return done(null, userId);
-    }
-  ));
-
-  passport.use( new LocalStrategy( {
+)
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(ProductosMongoRouter)
+app.use(carritoMongoRouter)
+app.use(RandomRouter)
+passport.use( new LocalStrategy( {
     usernameField: 'userId',
     passwordField: 'pass'
 },(userId, pass, done) =>{
@@ -116,40 +57,50 @@ passport.use('login', new LocalStrategy(
         })   
     }
 ))
-//////////////////   passport serialize   ///////
-
-passport.serializeUser((user, done) => {
-    done(null, user.id)
+passport.serializeUser((user, cb)=>{
+    cb(null, user.id)
 })
+passport.deserializeUser((id,cb)=>{
+    User.findOne({_id: id}, (err, usr)=>{
+        const userInformation = {
+            userId: usr.userId,
+            isAdmin: usr.isAdmin
+        };
+        cb(null, userInformation)
+    });
+});
+app.post('/api/signup', async (req, res) => {
+    const {userId, pass} = req?.body
+    if(!userId || !pass  ) {
+        res.send("los valores no son validos")
+        return;
+    }
+    User.findOne({userId}, async (err, usr)=>{
+        if(err) throw err;
+        if(usr) res.send('el usuairo ya existe')
+        if(!usr) {
+            const hashed = await bcrypt.hash(pass, 10);
+            const newUser = new User({
+                userId,
+                pass: hashed
+            })
+            await newUser.save();
 
-
-passport.deserializeUser((id, done) => {
-    let user = Users.find( user => user.id === id )
-
-    done(null, user)
-})
-
-
-app.post("/api/login", passport.authenticate("login",{successRedirect: '/api/productos'}),
-    (req, res) => {
-        res.send('algo')
-    }       
-  );
-
-// signup
-
-app.get('/signup', (req, res) => {
-    res.render('signup')
-})
-
-// logout
-app.get('/logout', (req, res, next) => {
-    req.logout((err) => {
-        if (err) { return next(err) }
-        res.redirect('/login')
+            res.send('exito en guardar!')
+        }
     })
 })
-
+app.post('/api/login',passport.authenticate('local'), (req, res) => {
+    console.log(req.body.pass, req.body.userId)
+    res.send({user: req?.user.userId, isAdmin: req?.user.isAdmin })
+})
+app.get('/api/user', (req,res) => {
+    res.send(req?.user);
+})
+app.get('/api/logout', (req,res) => {
+    req.logout();
+    res.send("deslogueado");
+})
 app.get('/api/info', (req,res)=>{
     const info = {
         path: process.cwd(),
@@ -161,5 +112,6 @@ app.get('/api/info', (req,res)=>{
       };   
       res.send(info);
 })
-
-server.listen(4000, () => {console.log('server is running on 4000')})
+app.listen(8080, () => {
+    console.log('server corriendo')
+})

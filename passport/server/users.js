@@ -1,9 +1,15 @@
-let Users = [{
-    id: 1,
-    name: 'John Doe',
-    email: '',
-    password: 'admin',
-    username: 'admin'
-}]
+import mongoose from "mongoose";
 
-module.exports = Users
+const user = new mongoose.Schema({
+    userId: {
+        type: String,
+        unique: true
+    },
+    pass: String,
+    isAdmin: {
+        type: Boolean,
+        default: false
+    }
+})
+
+export default mongoose.model("User", user);

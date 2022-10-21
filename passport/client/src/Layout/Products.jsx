@@ -1,19 +1,21 @@
 import { useId } from "react";
 import { useState, useEffect } from "react";
-import useSocket from "../hooks/useSockect";
 import Product from './Product';
 import ModalConfirm from "./modalConfirm";
+import useRequest from '../hooks/useRequest';
 
 const Products = (props = []) => {
     const [products, setProducts] = useState([]);
-    const {isConnected, received} = useSocket({
-        listen: 'productos',
-    })
-    useEffect(() => {
-        if(isConnected && received!=[]){
-            setProducts(received[0])        
+    const { doSend , errors  } = useRequest({
+        url: "/api/productos",
+        method: "get",
+        onSuccess: (obj) => {
+            setProducts(obj.productos);
         }
-    }, [received])
+    });
+    useEffect(() => {
+        doSend()
+    }, []) 
     const id = useId();
     if( products.length === 0){
         return <div>Cargando...</div>
