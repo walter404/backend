@@ -1,0 +1,18 @@
+[2022-10-22 07:28:59.652 PM] [33mwarn[39m: 	[33m{[39m
+[33m  path: 'C:\\Coderhouse\\server',[39m
+[33m  processId: 16904,[39m
+[33m  nodeVersion: 'v18.10.0',[39m
+[33m  title: undefined,[39m
+[33m  system: 'win32',[39m
+[33m  memory: 60760064[39m
+[33m}[39m
+[2022-10-27 06:24:34.598 PM] [33mwarn[39m: 	[33mnumero de procesadores: 0[39m
+[2022-10-27 06:24:34.600 PM] [33mwarn[39m: 	[33mPID Master 16480 [39m
+[2022-10-27 07:00:17.700 PM] [33mwarn[39m: 	[33m{[39m
+[33m  path: 'C:\\backeng\\server',[39m
+[33m  processId: 1228,[39m
+[33m  nodeVersion: 'v18.10.0',[39m
+[33m  title: undefined,[39m
+[33m  system: 'win32',[39m
+[33m  memory: 92831744[39m
+[33m}[39m

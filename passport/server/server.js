@@ -6,12 +6,59 @@ import cors from "cors";
 import passport from "passport";
 import passportLocal from "passport-local";
 import cookieParser from "cookie-parser";
-import session from "express-session"
+import session from "express-session";
+import {createLogger, transports, format  }  from 'winston';
+import cluster from 'cluster';
+import {cpus} from 'os';
+import isPrime from './isPrime.js';
 import User from "./User.js";
 import { ProductosMongoRouter } from "./productosMongoRouter.js";
 import {carritoMongoRouter} from "./carritosMongoRouter.js";
 import {RandomRouter} from './RandomRouter.js'
 dotenv.config()
+
+const PORT = parseInt(process.argv[2]) || 8080
+const modoCluster = process.argv[3] == 'CLUSTER'
+
+const logger = createLogger({
+    level: 'warn',
+    format: combine(
+        colorize({ all: true }),
+        timestamp({
+            format: 'YYYY-MM-DD hh:mm:ss.SSS A',
+        }),
+        align(),
+        printf((info) => `[${info.timestamp}] ${info.level}: ${info.message}`)
+        ),
+        transports : [
+            new transports.Console({level: 'verbose'}),
+            new transports.File({filename: './logs/warn.log', level: 'warn'}),
+        new transports.File({filename: './logs/error.log', level: 'error'}) 
+    ]
+})
+
+
+if(modoCluster && cluster.isPrimary){
+    const numCPUs = cpus.length;
+    logger.warn(`numero de procesadores: ${numCPUs}`)
+    logger.warn(`PID Master ${process.pid} `)
+    for (let i = 0; i < numCPUs; i++){
+        cluster.fork();
+    }
+    cluster.on('exit', worker => {
+        console.log('Worker', worker.process.pid, ' died', new Date().toLocaleString() )
+    })
+} else {
+    const app = express ();
+    app.get('/', (req,res)=> {
+        const primes = []
+        const max = Number(req.query.max) || 1000;
+        for (let i = 1; i <= max; i++){
+            if(isPrime(i)) primes.push(i)
+        }
+        res.json(primes)
+    })
+}
 
 const LocalStrategy = passportLocal.Strategy
 const url = process.env.MONGO_URI;
@@ -109,9 +156,73 @@ app.get('/api/info', (req,res)=>{
         title: process.tittle,
         system: process.platform,
         memory: process.memoryUsage.rss(),
-      };   
+      };
+      logger.warn(info)   
       res.send(info);
 })
-app.listen(8080, () => {
-    console.log('server corriendo')
+
+app.get("/newUser", (req, res) => {
+    console.log('algo no?')
+    let username = req.query.username || "";
+    const password = req.query.password || "";
+
+    username = username.replace(/[!@#$%^&*]/g, "");
+
+    if (!username || !password || users[username]) {
+        return res.sendStatus(400);
+    }
+
+    const salt = crypto.randomBytes(128).toString("base64");
+    const hash = crypto.pbkdf2Sync(password, salt, 10000, 512, "sha512");
+
+    users[username] = { salt, hash };
+
+    res.sendStatus(200);
+})
+
+app.get("/auth-bloq", (req, res) => {
+    let username = req.query.username || "";
+    const password = req.query.password || "";
+  
+    username = username.replace(/[!@#$%^&*]/g, "");
+  
+    if (!username || !password || !users[username]) {
+      process.exit(1)
+      // return res.sendStatus(400);
+    }
+  
+    const { salt, hash } = users[username];
+    const encryptHash = crypto.pbkdf2Sync(password, salt, 10000, 512, "sha512");
+  
+    if (crypto.timingSafeEqual(hash, encryptHash)) {
+      res.sendStatus(200);
+    } else {
+      process.exit(1)
+      // res.sendStatus(401);
+    }
+})
+
+app.get("/auth-nobloq", (req, res) => {
+    let username = req.query.username || "";
+    const password = req.query.password || "";
+    username = username.replace(/[!@#$%^&*]/g, "");
+  
+    if (!username || !password || !users[username]) {
+      process.exit(1)
+      // return res.sendStatus(400);
+    }
+    crypto.pbkdf2(password, users[username].salt, 10000, 512, 'sha512', (err, hash) => {
+      if (users[username].hash.toString() === hash.toString()) {
+        res.sendStatus(200);
+      } else {
+        process.exit(1)
+        //res.sendStatus(401);
+      }
+    });
+});
+
+app.listen(PORT, () => {
+    console.log('server corriendo en', PORT)
+    console.log('pid worker ', process.pid)
+
 })
